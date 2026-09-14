@@ -1,0 +1,64 @@
+======================================================================
+               CÁC NHÓM CHỨC NĂNG BỔ SUNG TRONG CSS
+======================================================================
+
+----------------------------------------------------------------------
+1. NHÓM TƯƠNG TÁC & HOẠT HOẠT HỌA (ANIMATIONS & TRANSFORMS)
+----------------------------------------------------------------------
+Nhiệm vụ: Tạo chuyển động, biến dạng không gian (2D/3D) và điều khiển
+phản hồi sinh động khi người dùng tương tác.
+
+- transform         : Dịch chuyển (translate), xoay (rotate), thu phóng (scale), 
+                      hoặc làm nghiêng (skew) phần tử.
+- transform-origin  : Xác định tâm điểm để thực hiện phép biến đổi transform.
+- @keyframes        : Định nghĩa chuỗi kịch bản chuyển động theo mốc thời gian (0% đến 100%).
+- animation         : Thuộc tính gộp áp dụng kịch bản @keyframes vào phần tử 
+                      (quy định thời gian, số lần lặp, hướng chạy...).
+- perspective       : Tạo độ sâu không gian 3D cho các phần tử con.
+
+
+----------------------------------------------------------------------
+2. NHÓM ĐÁP ỨNG & ĐIỀU KIỆN (RESPONSIVE & MEDIA QUERIES)
+----------------------------------------------------------------------
+Nhiệm vụ: Giúp giao diện tự động thích ứng với kích thước màn hình,
+hệ điều hành, hoặc chế độ sáng/tối của thiết bị.
+
+- @media            : Áp dụng CSS theo điều kiện màn hình (ví dụ: max-width, min-width, orientation).
+- prefers-color-scheme : Tự động nhận biết thiết bị đang bật chế độ Dark Mode hay Light Mode.
+- container queries : Áp dụng CSS dựa trên kích thước của khung chứa trực tiếp 
+                      thay vì kích thước toàn bộ màn hình.
+
+
+----------------------------------------------------------------------
+3. NHÓM XỬ LÝ VĂN BẢN & PHÔNG CHỮ NÂNG CAO (TYPOGRAPHY & TEXT)
+----------------------------------------------------------------------
+Nhiệm vụ: Căn chỉnh chi tiết về khoảng cách, hàng lối và cách ngắt câu của chữ.
+
+- line-height       : Khoảng cách giữa các dòng chữ (chiều cao dòng).
+- letter-spacing    : Khoảng cách giữa các ký tự (chữ cái).
+- text-transform    : Đổi kiểu chữ (uppercase, lowercase, capitalize).
+- text-decoration   : Gạch chân, gạch ngang hoặc gạch trên đầu chữ.
+- white-space       : Xử lý khoảng trắng và cách xuống dòng tự động (nowrap, pre-wrap).
+- text-overflow     : Xử lý chữ khi bị tràn khung (ví dụ: ellipsis để hiện dấu "...").
+- hyphens           : Tự động thêm dấu gạch nối khi từ bị ngắt dòng ở cuối hàng.
+
+
+----------------------------------------------------------------------
+4. NHÓM QUẢN LÝ BIẾN & TÍNH TOÁN (VARIABLES & MATH)
+----------------------------------------------------------------------
+Nhiệm vụ: Quản lý dữ liệu tập trung và thực hiện tính toán động ngay trong CSS.
+
+- :root             : Pseudo-class đại diện cho phần tử gốc (html), dùng lưu biến toàn cục.
+- var()             : Hàm gọi và sử dụng giá trị của biến CSS (ví dụ: var(--primary-color)).
+- calc()            : Hàm tính toán số học động (ví dụ: width: calc(100% - 40px)).
+- min() / max() / clamp() : Các hàm chọn giá trị tối thiểu, tối đa hoặc giới hạn 
+                            kích thước linh hoạt theo màn hình.
+
+
+----------------------------------------------------------------------
+5. NHÓM ĐIỀU KHIỂN IN ẤN & XUẤT TÀI LIỆU (PAGINATED MEDIA)
+----------------------------------------------------------------------
+Nhiệm vụ: Tối ưu trang web khi người dùng bấm in (Ctrl + P) hoặc xuất file PDF.
+
+- @page             : Quy định kích thước trang in, lề trang in.
+- break-before / break-after / break-inside : Xử lý ngắt trang khi in tài liệu.

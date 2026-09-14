@@ -1,0 +1,66 @@
+======================================================================
+                  PHÂN LOẠI CÁC THUỘC TÍNH CSS THEO CHỨC NĂNG
+======================================================================
+
+----------------------------------------------------------------------
+1. NHÓM BỐ CỤC (LAYOUT & STRUCTURE)
+----------------------------------------------------------------------
+Nhiệm vụ: Đóng vai trò làm "khung xương", sắp xếp vị trí, kích thước
+và khoảng cách giữa các phần tử trên màn hình.
+
+- display           : Quy định kiểu hiển thị của phần tử (flex, grid, block, inline-block, none).
+- flex-direction    : Hướng sắp xếp các phần tử con trong Flexbox (row, column).
+- justify-content   : Căn chỉnh phần tử con theo trục chính trong Flexbox/Grid (center, space-between,...).
+- align-items       : Căn chỉnh phần tử con theo trục phụ trong Flexbox/Grid (center, flex-start,...).
+- gap               : Tạo khoảng cách giữa các phần tử con trong Flexbox hoặc Grid.
+- margin            : Khoảng cách BÊN NGOÀI viền của phần tử (đẩy các phần tử khác ra xa).
+  (Ví dụ: margin-left, margin-top, margin-right, margin-bottom)
+- padding           : Khoảng cách BÊN TRONG phần tử (đệm từ viền vào nội dung bên trong).
+  (Ví dụ: padding-left, padding-top,...)
+- position          : Định vị phần tử trong không gian (static, relative, absolute, fixed, sticky).
+- top / bottom / left / right : Tọa độ dịch chuyển khi sử dụng thuộc tính position.
+- width / height    : Chiều rộng và chiều cao cố định của phần tử.
+- min-height / max-width : Giới hạn chiều cao tối thiểu hoặc chiều rộng tối đa.
+- box-sizing        : Cách tính kích thước khung (dùng border-box để gộp cả padding và border vào kích thước tổng).
+- overflow          : Xử lý phần nội dung bị tràn ra ngoài khung (hidden, scroll, auto).
+- z-index           : Thứ tự hiển thị theo chiều sâu (quyết định phần tử nào đè lên phần tử nào).
+
+
+----------------------------------------------------------------------
+2. NHÓM TRANG TRÍ (STYLING & AESTHETICS)
+----------------------------------------------------------------------
+Nhiệm vụ: Đóng vai trò như "lớp sơn & phụ kiện", trang trí màu sắc, 
+đường nét, phông chữ và hiệu ứng thị giác cho giao diện.
+
+- color             : Màu sắc của chữ.
+- background        : Thuộc tính gộp cài đặt màu nền, hình nền, dải màu gradient, vị trí nền,...
+- background-color  : Chỉ riêng màu nền đơn thuần.
+- background-image  : Ảnh nền hoặc dải màu (linear-gradient, radial-gradient).
+- font-family       : Định dạng họ phông chữ.
+- font-size         : Kích cỡ phông chữ.
+- font-weight       : Độ đậm nhạt của chữ (100 đến 900, bold, normal).
+- border            : Viền xung quanh phần tử (độ dày, kiểu viền, màu viền).
+- border-radius     : Độ bo tròn các góc của phần tử.
+- box-shadow        : Hiệu ứng tạo bóng đổ cho khung hình.
+- text-shadow       : Hiệu ứng tạo bóng đổ cho chữ.
+- filter            : Hiệu ứng xử lý hình ảnh trên phần tử (ví dụ: blur() làm mờ, brightness(),...).
+- backdrop-filter   : Làm mờ hoặc đổi màu vùng không gian PHÍA SAU phần tử (tạo hiệu ứng kính mờ Glassmorphism).
+- opacity           : Độ trong suốt toàn phần của phần tử (từ 0 đến 1).
+- cursor            : Tùy chỉnh kiểu con trỏ chuột khi rê vào phần tử (pointer, default, not-allowed).
+- transition        : Tạo thời gian và hiệu ứng chuyển cảnh mượt mà khi thuộc tính thay đổi.
+- pointer-events    : Quy định phần tử có nhận tương tác chuột hay không (none = cho chuột xuyên qua).
+
+
+----------------------------------------------------------------------
+3. GIẢI THÍCH VỀ CÁC TIỀN TỐ TIỀN THỰC NGHIỆM (-WEBKIT-)
+----------------------------------------------------------------------
+Các thuộc tính bắt đầu bằng -webkit- (ví dụ: -webkit-background-clip, -webkit-appearance) 
+được gọi là Vendor Prefixes (Tiền tố trình duyệt).
+
+- Mục đích: Được các nhà phát triển trình duyệt thêm vào để thử nghiệm tính năng CSS mới 
+  trước khi nó trở thành chuẩn chung toàn cầu.
+- Phạm vi hoạt động: -webkit- dành cho các trình duyệt chạy engine WebKit/Blink như 
+  Google Chrome, Apple Safari, Microsoft Edge, Opera, Brave,...
+- Ví dụ thực tế:
+  + -webkit-background-clip: text;  -> Cắt dải màu nền ăn theo khuôn chữ.
+  + -webkit-appearance: none;       -> Xóa bỏ giao diện mặc định của hệ điều hành trên các thẻ input, select.

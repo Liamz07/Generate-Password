@@ -1,0 +1,80 @@
+================================================================================
+          TÀI LIỆU PHƯƠNG HƯỚNG TÍCH HỢP & GIẢI PHÁP UI/UX
+                      DỰ ÁN: PASSWORD GENERATOR
+================================================================================
+
+I. TỔNG QUAN GIẢI PHÁP KIẾN TRÚC & UI/UX
+--------------------------------------------------------------------------------
+1. Định hướng Thiết kế (Design Language):
+   - Áp dụng Phong cách Glassmorphic Modern UI (mặt kính mờ): Sử dụng nền tối 
+     chủ đạo (#0f0b19), kết hợp các khối Card mờ và quầng sáng Blur phía sau.
+   - Phông chữ chuyên dụng: Sử dụng font Monospace (Consolas / Courier) cho khu
+     vực hiển thị mật khẩu để phân biệt rõ ràng từng ký tự (như số 0 với chữ O, 
+     số 1 với chữ l).
+   - Bố cục Responsive Grid: Chia 2 cột cân đối trên màn hình Desktop và tự động 
+     co về 1 cột trên giao diện Mobile.
+
+2. Trải nghiệm Người dùng (User Experience - UX):
+   - Tương tác thời gian thực (Real-time feedback): Mỗi thao tác kéo thanh trượt,
+     tích/bỏ ô chọn đều lập tức cập nhật mật khẩu mới và độ mạnh tương ứng.
+   - Phản hồi trực quan: Nút Copy có trạng thái chuyển đổi màu sắc và thông báo
+     ngắn (Copied!) giúp người dùng nhận biết thao tác thành công.
+
+
+II. PHƯƠNG HƯỚNG GIẢI QUYẾT CHI TIẾT TỪNG TÍNH NĂNG
+--------------------------------------------------------------------------------
+
+1. SINH MẬT KHẨU NGẪU NHIÊN BẢO MẬT (CORE ENGINE)
+   * Mục tiêu: Tạo mật khẩu đạt tiêu chuẩn an toàn cao, không trùng lặp và tuân 
+     thủ đầy đủ các tùy chọn của người dùng.
+   * Phương hướng xử lý:
+     - Xây dựng 4 bộ kho ký tự riêng biệt: Chữ hoa, Chữ thường, Chữ số, Ký tự đặc biệt.
+     - Lắng nghe trạng thái từ các ô Checkbox để hợp nhất các bộ ký tự được phép.
+     - Thuật toán ngẫu nhiên an toàn: Sử dụng API mã hóa bảo mật của hệ thống 
+       (Web Crypto API) thay vì các hàm ngẫu nhiên thông thường để chống đoán nhận.
+     - Đảm bảo độ phủ ký tự: Bắt buộc chọn ngẫu nhiên ít nhất 1 ký tự đại diện cho 
+       mỗi loại đã tích, sau đó tự động đảo trộn ngẫu nhiên toàn bộ chuỗi 
+       (Fisher-Yates Shuffle Algorithm) để tránh việc ký tự xuất hiện theo thứ tự cố định.
+
+2. ĐÁNH GIÁ ĐỘ MẠNH MẬT KHẨU (PASSWORD STRENGTH METER)
+   * Mục tiêu: Cho người dùng biết mật khẩu của họ có thực sự an toàn hay không.
+   * Phương hướng xử lý:
+     - Đánh giá dựa trên độ entropy (mức độ hỗn loạn thông tin): Kết hợp giữa 
+       độ dài mật khẩu và kích thước tập ký tự được chọn.
+     - Hệ thống quy đổi điểm: Tự động tính toán điểm số từ 0% - 100%.
+     - Phân loại 3 cấp độ:
+       + Dưới 40%: Yếu (Thanh tiến trình màu Đỏ) - Cảnh báo cần tăng độ dài.
+       + 40% - 74%: Trung bình (Thanh tiến trình màu Vàng) - Tạm ổn.
+       + Từ 75% trở lên: Mạnh (Thanh tiến trình màu Xanh) - Mật khẩu an toàn.
+
+3. SAO CHÉP VÀO KHAY NHỚ TẠM (COPY TO CLIPBOARD)
+   * Mục tiêu: Giúp người dùng lấy mật khẩu nhanh chóng chỉ bằng một cú click.
+   * Phương hướng xử lý:
+     - Tích hợp nút Copy dạng Icon gọn gàng nằm ngay bên trong khung hiển thị password.
+     - Kích hoạt lệnh ghi văn bản trực tiếp vào khay nhớ tạm của hệ thống.
+     - Thiết lập bộ đếm thời gian (Timer): Khi bấm Copy, tạm thời đổi nhãn sang 
+       "Copied!" và chuyển viền nút sang màu Xanh lá trong 2 giây, sau đó tự động 
+       khôi phục về trạng thái ban đầu.
+
+4. QUẢN LÝ VÀ CHUYỂN ĐỔI THEME (DARK / LIGHT MODE)
+   * Mục tiêu: Đáp ứng sở thích giao diện của người dùng và giữ trạng thái qua các lần truy cập.
+   * Phương hướng xử lý:
+     - Khai báo 2 bộ biến màu (CSS Variables) quản lý tông màu sáng và tối.
+     - Lắng nghe sự kiện thay đổi trên thẻ Select Theme ở góc trên Header.
+     - Lưu trữ cài đặt: Ghi nhớ lựa chọn Theme vào bộ lưu trữ cục bộ của trình 
+       duyệt (LocalStorage). Mỗi khi người dùng quay lại trang, hệ thống sẽ tự 
+       động đọc và áp dụng ngay Theme đã lưu.
+
+5. ĐỒNG BỘ THANH TRƯỢT ĐỘ DÀI (DYNAMIC SLIDER CONTROLLER)
+   * Mục tiêu: Điều chỉnh độ dài mật khẩu linh hoạt từ 8 đến 64 ký tự.
+   * Phương hướng xử lý:
+     - Lắng nghe sự kiện kéo thanh trượt (input event).
+     - Cập nhật con số hiển thị trực tiếp lên nhãn Badge ở tiêu đề khung Cài đặt.
+     - Tự động gọi lại hàm sinh mật khẩu mới ngay khi vị trí thanh trượt thay đổi.
+
+6. MỞ RỘNG NÂNG CẤP TRONG TƯƠNG LAI (UPGRADE ROADMAP)
+   * Lưu lịch sử tạo mật khẩu: Lưu tạm 5 mật khẩu gần nhất vào bộ nhớ phiên 
+     (SessionStorage) để người dùng xem lại khi lỡ tay bấm tạo mới.
+   * Cảnh báo ký tự dễ nhầm lẫn: Thêm tùy chọn loại bỏ các ký tự như `i`, `l`, `1`, 
+     `0`, `O` nếu người dùng muốn in ra giấy hoặc nhập tay lại.
+================================================================================
