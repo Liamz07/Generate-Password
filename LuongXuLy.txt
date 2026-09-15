@@ -1,0 +1,34 @@
+========================================================================================
+                                      initApp()
+                           (Khởi chạy toàn bộ ứng dụng)
+========================================================================================
+                                          │
+       ┌──────────────────────────────────┼──────────────────────────────────┐
+       │                                  │                                  │
+       ▼                                  ▼                                  ▼
+[1. KHỞI TẠO THEME]             [2. ĐẮNG KÝ SỰ KIỆN]               [3. TẠO MẬT KHẨU ĐẦU]
+   initTheme()                     registerEvents()             handlePasswordGeneration()
+       │                                  │                                  │
+       │                                  │                                  │
+       ▼                                  ▼                                  ▼
+┌──────────────┐               ┌──────────────────────┐           ┌──────────────────────┐
+│  Hàm hỗ trợ  │               │ Lắng nghe các phần tử│           │ Các hàm phụ trách    │
+└──────────────┘               └──────────────────────┘           └──────────────────────┘
+       │                                  │                                  │
+       └─► applyTheme()                   ├─► themeSelect ('change')         ├─► getSelectedPoolAndMandatoryChars()
+           (Áp dụng theme                   │   └─► handleThemeChange()        │   │
+            lên thẻ <html>)                 │       └─► applyTheme()           │   └─► getRandomCryptoInt()
+                                          │                                  │       (Rút ký tự bắt buộc an toàn)
+                                          ├─► lengthSlider ('input')         │
+                                          │   └─► handleLengthSliderInput()  ├─► getRandomCryptoInt()
+                                          │       └─► handlePassword...()    │   (Rút các ký tự ngẫu nhiên còn lại)
+                                          │                                  │
+                                          ├─► btnGenerate ('click')          ├─► shuffleArray()
+                                          │   └─► handlePassword...()        │   │
+                                          │                                  │   └─► getRandomCryptoInt()
+                                          ├─► btnCopy ('click')              │       (Trộn mảng ngẫu nhiên an toàn)
+                                          │   └─► handleCopyToClipboard()    │
+                                          │                                  └─► evaluateStrength()
+                                          └─► checkBoxes ('change')              │
+                                              └─► handlePassword...()            └─► updateStrengthMeter()
+                                                                                     (Cập nhật thanh độ mạnh UI)
